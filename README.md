@@ -43,6 +43,10 @@ tank-pid-controller/
 └── README.md
 ```
 
+## AI Use
+Claude code was used to create the simulation and visuals, while other logic was implemented by hand as this was a learning exercise.
+
+
 ## Setup & Run
 
 ```bash
@@ -73,15 +77,5 @@ The valve opens fully at t=0 to fill as fast as possible, then pulls back sharpl
 
 ---
 
-## What I Learned
-
-- P-only control always has steady-state error on this plant — you can see exactly how much from the math: `level_ss = SP / (1 + Kp × DC_gain)`
-- Adding I eliminates the error but slows things down; the tradeoff is real
-- Anti-windup matters — without it, the integral accumulates during the initial saturated phase and causes overshoot
-- Keeping the plant, controller, and simulation loop in separate files made it easy to swap gains and run comparisons without touching the core logic
-
----
-
-> PID controller implemented from scratch — no control library used.
 
 
