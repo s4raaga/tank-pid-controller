@@ -26,7 +26,7 @@ class PIDController:
 
         # Calculate error & add to running sum.
         error = setpoint - measurement
-        integral += error * dt
+        self.integral += error * dt
 
         # Calculate rate of change in error.
         derivative = (error - self.prev_error) / dt

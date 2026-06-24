@@ -30,14 +30,14 @@ class Tank:
         outflow = self.drain_k * self.level
 
         # Flow (vol / sec) -> Water level change for New Level
-        new_level = (self.level + (inflow - outflow)) / (self.area * dt)
+        new_level = self.level + (inflow - outflow) / self.area * dt
 
 
 
 
 
 
-        new_level = 0;
+        new_level = max(0.0, new_level)
 
         return new_level
     
