@@ -1,6 +1,4 @@
-"""
-
-"""
+"""Discrete PID controller with anti-windup."""
 
 
 class PIDController:
@@ -30,13 +28,15 @@ class PIDController:
 
         # Calculate rate of change in error.
         derivative = (error - self.prev_error) / dt
-        
+
         # PID Adjustment
         adjustment = (self.Kp * error) + (self.Ki * self.integral) + (self.Kd * derivative)
 
+        # Anti-windup: undo integral accumulation if output is saturated.
+        if adjustment < 0 or adjustment > 100:
+            self.integral -= error * dt
 
         # Update & return adjustment value btwn 0 & 100.
-
         self.prev_error = error
 
         return max(0, min(100, adjustment))
