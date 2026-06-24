@@ -6,21 +6,21 @@
 # Water tank class.
 class Tank:
     def __init__(self, area, max_flow, drain_k):
-        self.area = area # Tank area.
-        self.max_flow = max_flow # Maximum flow rate.
-        self.drain_k = drain_k # Drain rate.
-        self.level = 0.0
+        self.area = area # Tank's cross-sectional area.
+        self.max_flow = max_flow # Maximum inflow rate when valve is 100% open.
+        self.drain_k = drain_k # Drain / leak rate.
+        self.level = 0.0 # Current water height.
 
     def step(self, valve_percent, dt):
         """
         Change in water level based on how open the valve is.
         
         Arguments:
-        valve_percent = how open the valve is as a %. 
-        dt = time step amount.
+        valve_percent = how open the valve from 0 to 100. 
+        dt = timestep amount.
 
         Returns:
-        new_level = new tank level 
+        new_level = new tank level.
         """
 
         # Inflow (from valve)
